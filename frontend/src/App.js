@@ -13,7 +13,7 @@ function App() {
 
     const fetchTasks = async () => {
         try {
-            const response = await fetch('http://localhost:5000/tasks');
+            const response = await fetch('/tasks');
             const data = await response.json();
             setTasks(data);
         } catch (error) {
@@ -27,7 +27,7 @@ function App() {
 
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/tasks', {
+            const response = await fetch('/tasks', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title: taskInput })
@@ -46,7 +46,7 @@ function App() {
     // Delete task
     const deleteTask = async (id) => {
         try {
-            await fetch(`http://localhost:5000/tasks/${id}`, {
+            await fetch(`/tasks/${id}`, {
                 method: 'DELETE'
             });
             fetchTasks();
